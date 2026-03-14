@@ -1,13 +1,16 @@
-fetch_sim_info is responsible for reading SIM card details from the cellular modem.
-It collects important parameters such as:
+### fetch_sim_info
 
-SIM ICCID
+**Purpose:**  
+The `fetch_sim_info` function reads SIM card and network information from the cellular modem. It is used to verify SIM availability and network connectivity before starting cloud communication.
 
-IMSI number
+**Details Collected:**  
+- ICCID (SIM identifier)  
+- IMSI (Subscriber identity)  
+- Network operator name  
+- Signal strength (RSSI / CSQ)  
+- Network registration status  
 
-Network operator name
-
-Signal strength (RSSI / CSQ)
-
-Network registration status
-This function is used during system initialization to ensure that the SIM card is present, active, and connected to the network before MQTT / internet communication starts.
+**Usage Example:**
+```python
+sim_info = fetch_sim_info()
+print(f"ICCID: {sim_info.iccid}, Operator: {sim_info.operator}")
